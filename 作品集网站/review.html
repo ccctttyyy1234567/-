@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>效率工具评测 · 790 → 529 秒 — 蔡腾宇</title>
+<meta name="description" content="给自建的 PasteNote 做两遍对照：同一个人、同一批 20 行，一遍纯手工一遍工具辅助，另有朋友的一份协测。用时 −33%、切窗 −91.9%、按键只 −8.5%。">
+<meta name="theme-color" content="#FAF7F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12100D" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="效率工具评测 — 蔡腾宇">
+<meta property="og:description" content="先证明数据可信，再谈它到底快在哪。">
+<meta property="og:image" content="assets/img/ev-01-report.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+</svg>
+
+<header class="site-head">
+  <div class="shell bar">
+    <a class="brand" href="index.html" aria-label="回到首页">
+      <span class="mark" aria-hidden="true">蔡</span>
+      <span class="txt"><span class="name">CAI TENGYU</span><span class="role">Portfolio · 2026</span></span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html#works" aria-current="page">作品</a>
+      <a href="index.html#method">方法</a>
+      <a href="index.html#about">关于</a>
+      <a href="index.html#contact">联系</a>
+    </nav>
+    <div class="head-tools">
+      <button class="icon-btn" data-theme-toggle aria-label="切换深浅色" aria-pressed="false"><svg aria-hidden="true"><use href="#i-moon"/></svg></button>
+      <button class="icon-btn menu-btn" data-menu aria-expanded="false" aria-controls="drawer" aria-label="打开菜单"><svg aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+  <div class="drawer" id="drawer">
+    <nav aria-label="移动端导航">
+      <a href="index.html#works"><span>作品</span><span>01—03</span></a>
+      <a href="index.html#method"><span>方法</span><span>HOW</span></a>
+      <a href="index.html#about"><span>关于</span><span>ABOUT</span></a>
+      <a href="index.html#contact"><span>联系</span><span>CONTACT</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="proj-hero" style="--c1:#2C6A4E">
+    <div class="shell">
+      <div class="crumb"><a href="index.html">作品集</a><span class="sep">/</span><span class="cur">03 · 效率工具评测</span></div>
+      <div class="tag" style="color:#2C6A4E"><span class="sq" style="background:#2C6A4E"></span>Evaluation · 2026.10 · 真人两遍 · 20 行 / 遍</div>
+      <h1>效率工具评测</h1>
+      <p class="sub">给一个真实在用的小工具做两遍对照：同一个人、同一批 20 行，一遍纯手工、一遍工具辅助，两边都计时、数按键、数切表。<strong>先证明数据可信，再谈它到底快在哪。</strong></p>
+      <div class="meta">
+        <span>被测 <b>PasteNote（作品二）</b></span>
+        <span>方法 <b>同人 · 同任务 · 两遍</b></span>
+        <span>样本 <b>4 行记录 · 2 位测试者</b></span>
+        <span>日期 <b>2026.10.26</b></span>
+      </div>
+      <div class="kpis">
+        <div class="k"><b>−33.0<small>%</small></b><span>用时 790.2 → 529.1 秒</span></div>
+        <div class="k"><b>−91.9<small>%</small></b><span>窗口切换 172 → 14</span></div>
+        <div class="k"><b>−62.8<small>%</small></b><span>鼠标点击 406 → 151</span></div>
+        <div class="k"><b>−8.5<small>%</small></b><span>按键 766 → 701</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc">
+    <div class="shell">
+      <div class="grid">
+        <aside class="side" aria-label="本页目录">
+          <div class="lbl">CONTENTS</div>
+          <nav>
+            <a href="#s-intent">一 · 为什么做它</a>
+            <a href="#s-why">二 · 为什么还要测</a>
+            <a href="#s-rules">三 · 口径写成规则</a>
+            <a href="#s-result">四 · 结果</a>
+            <a href="#s-co">五 · 朋友的协测</a>
+            <a href="#s-cause">六 · 归因</a>
+            <a href="#s-action">七 · 从数字到动作</a>
+            <a href="#s-pack">八 · 交付形态</a>
+            <a href="#s-report">九 · 原始报告</a>
+            <a href="#s-limits">十 · 局限</a>
+            <a href="#s-file">十一 · 获取原文件</a>
+          </nav>
+        </aside>
+
+        <article class="article">
+          <p class="lead">评测最容易被写坏的地方，不是算错数，而是<strong>口径松了</strong>：少算一次切表、把改错的时间不计入、样本不够也硬下结论。所以我先把规则写死，再跑；跑的人也不止我一个——<strong>我跑了两轮，另请一位朋友按同一套流程跑了一轮两遍</strong>。</p>
+
+          <figure>
+            <img src="assets/img/ev-01-report.png" alt="自动生成的评测报告：一句话结论与关键数据" data-zoom data-title="图 1 · 跑完自动出的报告" width="1400" height="900" loading="lazy">
+            <figcaption><b>图 1 · 跑完自动出的报告。</b>顶部是「为什么这么测」，然后一句按数据算出来的结论（快多少、省多少秒、按键差多少），再下面是两组的 KPI 卡。数字全部来自结果表，AI 只负责把它讲成人话。</figcaption>
+          </figure>
+
+          <h2 id="s-intent"><span class="n">01</span>先说清楚：这个工具不是为了当「马鞭」</h2>
+          <blockquote>我做 PasteNote，是为了在那个工作场景里把<strong>舒适感和便利性</strong>提上去，效率是顺带的；不是为了把这几十秒再压一遍、做成一根抽在自己身上的「马鞭」。</blockquote>
+          <p>那段时间每天要在同一张表和另一个窗口之间来回几十次。真正难受的不是「慢」，是那种持续的琐碎：手要不停找位置，眼睛要不停重新认路，脑子里还挂着「刚才那条到底联系上没有」。这些不会出现在任何报表里，但它一直在消耗人。</p>
+          <p>所以这一页的读法是：<strong>舒适度是目标</strong>，时间是结果之一；<strong>测量是为了少瞎改</strong>，知道自己这一刀落在哪儿，比再多快 3 秒重要。</p>
+
+          <h2 id="s-why"><span class="n">02</span>为什么还要测</h2>
+          <p>光「用着舒服」回答不了三个问题：还值不值得继续改？该改哪一步？能不能推荐给别人？</p>
+          <p>更麻烦的是作者身份：<strong>既是运动员又是裁判</strong>。人一旦希望某个数字好看，口径就会不知不觉松掉。所以这次刻意反着来：口径先写死，闸门放在「判卷全对才记数」上；再请一个没有被剧透的朋友跑一遍——<strong>他自己跑出来的数字，比我说服力强</strong>。</p>
+
+          <h2 id="s-rules"><span class="n">03</span>把口径写成规则</h2>
+          <p>2026-10-25～26 把测量做成脚本，让程序替我做判断，而不是靠「我记得按对」：</p>
+          <div class="tbl-wrap">
+            <div class="scroll">
+              <table>
+                <caption>六条写死的口径</caption>
+                <thead><tr><th>环节</th><th>定死的规则</th><th>为什么必须这样</th></tr></thead>
+                <tbody>
+                  <tr><td>计时</td><td>长按右 Ctrl ≥0.3 秒、<b>松手那一下</b>才开始；轻按一下结束。开表、找窗口这些前戏不算</td><td>「开表快慢」不是被测对象；把前戏算进去，两遍的差距会被稀释</td></tr>
+                  <tr><td>改错</td><td>判卷发现错、改完重判的<b>时间继续计入</b></td><td>不计入就等于「改完再测一遍」，误差正好被藏进最容易被质疑的地方</td></tr>
+                  <tr><td>计数</td><td>低层键盘钩子、<b>不含修饰键</b>；每 50ms 看一眼前台窗口，标题变了 +1；鼠标只数左键</td><td>「按了几个键」要能重复算出来；右键滚轮不算，点单元格、点标签页算——它们是真实的定位成本</td></tr>
+                  <tr><td>判卷</td><td>逐格比四列；<b>全对才写进结果表</b>，没有「强制导入」；判卷前先比对文件指纹</td><td>只采信「做对了」的轮次，才能把「操作成本」和「做错了」分开谈</td></tr>
+                  <tr><td>采信</td><td>两组各一行、行数 = 期望、0 不一致；任何一条不满足就重跑，<b>不补数</b></td><td>补数会让样本看起来完整，实际上是在编</td></tr>
+                  <tr><td>数据链</td><td><code>csv</code> 是真相，<code>xlsx</code> 每次从它重建；结果逐轮留底</td><td>留的是「第一次判卷错了几处」，而不是最终结果——最终一定全对，没有信息量</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p>还有两处是踩出来的：开始计时后静置 0.9 秒、取两次读数的较大值，避免「还没动手就记了 2 次切表」；每遍开跑前先把空白表恢复（并用字节数核对），否则上一轮的字会混进这一轮。</p>
+
+          <h2 id="s-result"><span class="n">04</span>结果：一轮，两遍</h2>
+          <p>2026-10-26 下午正式跑的一组，同一个下午、同一批 20 行：</p>
+          <div class="tbl-wrap">
+            <div class="scroll">
+              <table>
+                <caption>主结果 · 16:41 / 16:51</caption>
+                <thead><tr><th>时间</th><th>版本</th><th class="num">行数</th><th class="num">用时</th><th class="num">按键</th><th class="num">切表</th><th class="num">鼠标</th><th class="num">首次不一致</th></tr></thead>
+                <tbody>
+                  <tr><td>10-26 16:41</td><td>手工</td><td class="num">20</td><td class="num">790.2 秒</td><td class="num">766</td><td class="num">172</td><td class="num">406</td><td class="num">0</td></tr>
+                  <tr><td>10-26 16:51</td><td>PasteNote 辅助</td><td class="num">20</td><td class="num">529.1 秒</td><td class="num">701</td><td class="num">14</td><td class="num">151</td><td class="num">0</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="cap"><span>TIME PER 20 LINES</span><span>SECONDS</span></div>
+            <div class="bars">
+              <div class="brow"><span class="bl">纯手工</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">790.2 秒 · 20 行 · 39.5 秒 / 行</span></div>
+              <div class="brow"><span class="bl">PasteNote</span><span class="track"><span class="fill acc" style="width:66.9%"></span></span><span class="val">529.1 秒 · −33.0% · 26.5 秒 / 行</span></div>
+            </div>
+          </div>
+
+          <div class="tbl-wrap">
+            <div class="scroll">
+              <table>
+                <caption>七项指标 · 变化均相对纯手工</caption>
+                <thead><tr><th>指标</th><th class="num">纯手工</th><th class="num">PasteNote 辅助</th><th class="num">变化</th></tr></thead>
+                <tbody>
+                  <tr><td>用时</td><td class="num">790.2 秒</td><td class="num">529.1 秒</td><td class="num"><span class="good">−33.0%</span></td></tr>
+                  <tr><td>秒 / 行</td><td class="num">39.5</td><td class="num">26.5</td><td class="num"><span class="good">−32.9%</span></td></tr>
+                  <tr><td>按键次数</td><td class="num">766</td><td class="num">701</td><td class="num"><span class="warn">−8.5%</span></td></tr>
+                  <tr><td>按键 / 行</td><td class="num">38.3</td><td class="num">35.0</td><td class="num"><span class="warn">−8.6%</span></td></tr>
+                  <tr><td>窗口切换</td><td class="num">172</td><td class="num">14</td><td class="num"><span class="good">−91.9%</span></td></tr>
+                  <tr><td>鼠标左键点击</td><td class="num">406</td><td class="num">151</td><td class="num"><span class="good">−62.8%</span></td></tr>
+                  <tr><td>按键 / 秒</td><td class="num">0.97</td><td class="num">1.32</td><td class="num"><span class="good">+0.35</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <p>同一天下午更早还有一组（14:28 / 14:43）：手工 932.3 秒（首次判卷错 2 处、重判 1 次）对辅助 671.6 秒，省 28.0%。两组放在一起看，方向一致，但绝对秒数差别不小——这正是为什么不能只报一轮就下结论。</p>
+
+          <div class="tbl-wrap">
+            <div class="scroll">
+              <table>
+                <caption>全部四行原始记录（结果表原样）</caption>
+                <thead><tr><th>时间</th><th>版本</th><th class="num">用时</th><th class="num">按键</th><th class="num">切表</th><th class="num">鼠标</th><th class="num">首次不一致</th></tr></thead>
+                <tbody>
+                  <tr><td>10-26 14:28</td><td>手工</td><td class="num">932.3 秒</td><td class="num">772</td><td class="num">95</td><td class="num">306</td><td class="num">2</td></tr>
+                  <tr><td>10-26 14:43</td><td>PasteNote 辅助</td><td class="num">671.6 秒</td><td class="num">721</td><td class="num">58</td><td class="num">219</td><td class="num">0</td></tr>
+                  <tr><td>10-26 16:41</td><td>手工</td><td class="num">790.2 秒</td><td class="num">766</td><td class="num">172</td><td class="num">406</td><td class="num">0</td></tr>
+                  <tr><td>10-26 16:51</td><td>PasteNote 辅助</td><td class="num">529.1 秒</td><td class="num">701</td><td class="num">14</td><td class="num">151</td><td class="num">0</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="bnote" style="font-size:11.5px;color:var(--sub);margin-top:-8px">「首次不一致」= 第一次判卷错了几处（0 = 一次全对）；改完重判的时间仍计入用时。</p>
+
+          <h2 id="s-co"><span class="n">05</span>朋友的协测：同一套流程，另一个人的手</h2>
+          <p>自己测自己的工具，最难摆脱的就是「我知道该怎么按」。所以请了一位有同类工作场景的朋友，按同一份说明、同一套 20 行数据自己跑两遍；我只提供流程，不参与操作。</p>
+
+          <div class="tbl-wrap">
+            <div class="scroll">
+              <table>
+                <caption>协测 1 · 独立跑的一轮两遍</caption>
+                <thead><tr><th>样本</th><th class="num">手工</th><th class="num">辅助</th><th class="num">省时</th><th class="num">切表</th><th class="num">鼠标</th><th class="num">按键</th></tr></thead>
+                <tbody>
+                  <tr><td>我（正式那轮）</td><td class="num">790.2 秒</td><td class="num">529.1 秒</td><td class="num"><span class="good">33.0%</span></td><td class="num">172 → 14</td><td class="num">406 → 151</td><td class="num">766 → 701</td></tr>
+                  <tr><td>协测 1 · 261029-004431</td><td class="num">630.3 秒</td><td class="num">544.5 秒</td><td class="num"><span class="good">13.6%</span></td><td class="num">108 → 16</td><td class="num">317 → 164</td><td class="num">764 → 695</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <p>朋友那份省了 13.6%，比我低，但两个结构性的数字仍然同向：<strong>切表 108 → 16（−85.2%）、鼠标 317 → 164（−48.3%）、按键只降 9.0%</strong>。也就是说，「省在找和切、不在打字」不是我一个人手速的问题，换双手也一样。</p>
+
+          <div class="callout">
+            <b>协测只写逐份明细，不做统计推断。</b>两份样本说明不了普遍性，但能说明一件事：这套口径别人照着也能跑，跑出来和我不是一个数——这恰恰是它可信的地方。
+          </div>
+
+          <h2 id="s-cause"><span class="n">06</span>归因：省在「找」和「切」，不在「打字」</h2>
+          <p>如果只看「快 33%」，很容易得出「工具提高了输入效率」——但按键次数几乎没动（−8.5%），每行还是 35 下左右。真正掉下去的是两类动作：</p>
+          <ul>
+            <li><strong>切表</strong>：172 → 14。原来处理完一条要回主表找下一条、再切回来；现在下一条已经在剪贴板里，这一步被整段省掉。</li>
+            <li><strong>鼠标点击</strong>：406 → 151。点单元格、点标签页这些定位动作少了六成，是两遍之间最大的单项差异。</li>
+          </ul>
+          <p>还有一个反直觉的数字：<strong>按键/秒从 0.97 升到 1.32</strong>。同样的打字量被压缩进更短的时间——手没变快，是中间的空转（找表、切窗、重新定位）被去掉了。</p>
+
+          <div class="callout">
+            <b>这条归因比「快 33%」有用得多：</b>它说明下一版不该继续优化「粘贴」，而该优化「找表和定位」。数字只能告诉你变好了；归因才能告诉你下一步做什么。
+          </div>
+
+          <h2 id="s-action"><span class="n">07</span>从数字到动作：每条建议都带「怎么验证」</h2>
+          <p>报告最后一节不是总结，是七条改动建议，每条都写着现状、怎么改、预期，以及<strong>下一轮用什么数字验收</strong>：</p>
+          <div class="tbl-wrap">
+            <div class="scroll">
+              <table>
+                <caption>四条建议 · 节选</caption>
+                <thead><tr><th>现状（数据说的）</th><th>怎么改</th><th>预期</th><th>怎么验证</th></tr></thead>
+                <tbody>
+                  <tr><td>按键只降 8.5%，省时不在输入环节</td><td>粘贴后自动把光标定位到下一个待填字段，支持「回车即跳下一格」</td><td>按键再降 10~15%</td><td>下一轮按键总数 &lt; 650</td></tr>
+                  <tr><td>切表被整段省掉，但仍依赖「记得回表」</td><td>界面固定一个「表列表侧栏」，显示当前表名与已填行数，点击即切</td><td>切表稳定在 20 次以内</td><td>两次跑测的切表都 &lt; 20</td></tr>
+                  <tr><td>鼠标点击仍有 151 次，是最大单项动作量</td><td>给粘贴、确认、下一行绑快捷键，并在界面上标出提示</td><td>点击降到 100 以内</td><td>下一轮点击总数 &lt; 100</td></tr>
+                  <tr><td>主观题唯一抱怨是「皮肤太少」，功能层面无痛点</td><td>3~5 套内置主题（浅色 / 深色 / 高对比），一键切换并记住</td><td>不影响时间指标，提升满意度</td><td>复测时 Q5 是否还提皮肤</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p>这张表其实是评测里最像产品经理的部分：把「数据说了什么」翻译成「改哪里、改到什么程度算成功」。没有最后那列「怎么验证」，前面所有数字都只是一次漂亮的陈述。</p>
+
+          <h2 id="s-pack"><span class="n">08</span>交付形态：一个别人也能跑的包</h2>
+          <p>评测跑通一次不算完——要能交给别人复现，才有意义。所以最后交付的不是一份报告，是一个包：</p>
+
+          <figure>
+            <img src="assets/img/ev-03-package.gif" alt="评测包的目录结构" data-zoom data-title="图 2 · 评测包结构（录屏）" width="1400" height="860" loading="lazy">
+            <figcaption><b>图 2 · 包的结构（录屏）。</b>依次是：根目录（说明 / 三套入口 / 结果 / 开发资料）→ 第 1 步说明 → 第 2 步三套入口 → 正式评测那套 → 第 3 步结果 → 每轮结果留底 → 原始数据 → 方法论技能文档。</figcaption>
+          </figure>
+
+          <ul>
+            <li><strong>三个入口，按目的分开</strong>：正式评测（两遍自动串起来，只点一次）、半自动演示（机器自己跑，只验功能）、教学演示（只看不记）。机器节奏的数据<strong>不进结果表</strong>。</li>
+            <li><strong>协测（已跑 1 份）</strong>：朋友用同一个包跑了同样两遍，报告右栏按「逐份明细」列出，不做统计推断；再加人也只写 n 份，不改口径。</li>
+            <li><strong>报告</strong>：数据 + 6 个主观问题的原话 + 局限 + 建议，一键生成 HTML / MD；AI 分析只负责把数据讲成话，<strong>数字一律来自结果表</strong>。</li>
+            <li><strong>抽查清单</strong>：三条验真——原始行能不能回算、数字是不是真人跑出来的、口径声明是否属实。一条不过，就别把数字写进简历。</li>
+          </ul>
+
+          <figure>
+            <img src="assets/img/ev-02-profile.png" alt="报告里的操作画像一节" data-zoom data-title="图 3 · 报告里的「操作画像」" width="1400" height="900" loading="lazy">
+            <figcaption><b>图 3 · 报告里的「操作画像」。</b>四句话全部由结果表算出来：打字强度、切表频率、每行耗时、鼠标依赖——不是事后补写的观感。</figcaption>
+          </figure>
+
+          <h2 id="s-report"><span class="n">09</span>原始报告：跑完自动生成的那一份</h2>
+          <p>这是评测包跑完后自动生成的报告原件（2026-10-29 01:29 生成）：包含关键数据、对比、操作画像、6 道主观题的原话、局限与未测、七条建议，以及附录里的口径声明和原始 CSV。数字全部来自结果表，AI 只负责把它讲成话。</p>
+
+          <div class="proof">
+            <a class="proof-card" href="report.html">
+              <span class="pc-thumb" style="aspect-ratio:16/9;background:#2C6A4E;display:grid;place-items:center">
+                <span style="font-family:var(--serif);font-size:34px;color:#FAF7F1;letter-spacing:.06em">评测报告</span>
+              </span>
+              <span class="pc-body">
+                <span class="pc-k" style="color:#2C6A4E">REPORT 01 · HTML</span>
+                <b>PasteNote 测评报告</b>
+                <span class="pc-d">我 + 朋友的两组数据、全部原话、局限、七条建议与原始 CSV，一份可直接核对的报告。</span>
+                <span class="pc-go" style="color:#2C6A4E">打开原始报告 <i aria-hidden="true">→</i></span>
+              </span>
+            </a>
+            <a class="proof-card" href="#s-file">
+              <span class="pc-thumb" style="aspect-ratio:16/9;background:var(--paper-3);display:grid;place-items:center">
+                <span style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--sub);text-align:center;line-height:2">CSV → XLSX → HTML<br>结果逐轮留底</span>
+              </span>
+              <span class="pc-body">
+                <span class="pc-k" style="color:#2C6A4E">数据链</span>
+                <b>四个数字背后的文件</b>
+                <span class="pc-d"><code>csv</code> 是真相，<code>xlsx</code> 每次从它重建；报告里的每一行都能回到原始记录。完整包在下方网盘。</span>
+                <span class="pc-go" style="color:#2C6A4E">跳到「获取原文件」 <i aria-hidden="true">↓</i></span>
+              </span>
+            </a>
+          </div>
+
+          <h2 id="s-limits"><span class="n">10</span>局限</h2>
+          <ul>
+            <li><strong>样本仍然很小：两个人、四行记录。</strong>我跑了两轮，朋友协测一轮；这只能看方向，做不了统计推断。再加人也不会写成「多人实测」——n 份就写 n 份。</li>
+            <li><strong>机器节奏的数字不能引用。</strong>半自动 / 演示版跑出来的 872.8 秒、401.8 秒、89.3 秒是机器手速，只用于验收功能。</li>
+            <li><strong>用「粘回本表」替代真实 IM。</strong>找联系人、切会话这些摩擦没有被计入，所以本评测可能<em>低估</em>工具在真实场景里的收益。</li>
+            <li><strong>计数器的边界。</strong>切表按 50ms 采样，极快切换会漏记；鼠标只数左键；非管理员进程看不见提权窗口。</li>
+            <li><strong>不能证明准确率提升。</strong>四行记录里只有一轮手工出现过 2 处不一致；20 行、两个人撑不起「更不容易错」的结论，只能说这几轮没出错。</li>
+          </ul>
+          <p>我不太相信「我感觉快多了」这种结论，哪怕它可能真的是对的——因为它没法复查、没法归因，也没法告诉下一个人该怎么验证。评测做的事，本质上是把一句模糊的感受拆成三样东西：<strong>能回算的数字、能解释的差异、下一版该改哪里</strong>。</p>
+
+          <h2 id="s-file"><span class="n">11</span>获取原文件</h2>
+          <p>整套评测包（说明 + 三套入口 + 判卷脚本 + 结果表 + 自动报告）在网盘里，可以直接下载复跑：</p>
+
+          <div class="cloud">
+            <span class="k">BAIDU NETDISK · 原文件</span>
+            <h3>效率工具评测包 · 可复跑</h3>
+            <p>按「第 1 步说明 → 第 2 步选入口 → 第 3 步看结果」走一遍；正式评测两遍自动串起来，只点一次。</p>
+            <div class="io">
+              <a class="url" href="https://pan.baidu.com/s/1SIWKLM_3R1S6GMJThCHz8Q?pwd=2v2t" target="_blank" rel="noopener">https://pan.baidu.com/s/1SIWKLM_3R1S6GMJThCHz8Q?pwd=2v2t</a>
+              <div class="row2">
+                <div class="pw"><em>提取码</em><b>2v2t</b><button data-copy="2v2t" type="button">复制</button></div>
+                <a class="go" href="https://pan.baidu.com/s/1SIWKLM_3R1S6GMJThCHz8Q?pwd=2v2t" target="_blank" rel="noopener"><span>打开网盘</span><span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="next">
+            <span class="lbl">RELATED</span>
+            <a href="pastenote.html"><span>02 · PasteNote 桌面效率工具</span><span>看这个 →</span></a>
+            <a href="renovation.html"><span>01 · 天怡财富城 68㎡ 旧房改造</span><span>看这个 →</span></a>
+          </div>
+
+          <div class="share">
+            <span class="mono" style="font-size:10.5px;letter-spacing:.1em">SHARE</span>
+            <button class="btn" data-share>复制本页链接</button>
+            <a class="btn" href="index.html">← 回作品集</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="shell in">
+    <div class="top">
+      <span>© <span data-year>2026</span> 蔡腾宇 · 个人作品集</span>
+      <span class="mono">EVALUATION · 4 RECORDS · 2 TESTERS</span>
+    </div>
+    <span style="font-size:11px;opacity:.8">数据来自 2026-10-26 的真人跑测（我两轮 + 朋友协测一轮，每轮两遍、每遍 20 行）；客户信息为虚构。</span>
+  </div>
+</footer>
+
+<div class="lb" aria-hidden="true" role="dialog" aria-label="图片查看">
+  <button class="close" data-lb-close aria-label="关闭">×</button>
+  <button class="nav prev" data-lb-nav="prev" aria-label="上一张">‹</button>
+  <button class="nav next" data-lb-nav="next" aria-label="下一张">›</button>
+  <div class="stage"><img alt=""></div>
+  <div class="zoombar">
+    <button type="button" data-zc="out" aria-label="缩小">−</button>
+    <button type="button" data-zc="fit" aria-label="适应屏幕">适应</button>
+    <button type="button" data-zc="in" aria-label="放大">＋</button>
+  </div>
+  <div class="bar">
+    <span class="nn">01 / 03</span>
+    <span class="tt"></span>
+    <span class="act"><a href="#" data-full-link target="_blank" rel="noopener">原图</a></span>
+  </div>
+</div>
+
+<button class="totop" aria-label="返回顶部"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M6 11l6-6 6 6"/></svg></button>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 495" width="700" height="495" role="img" aria-label="报价单示意">
+  <rect width="700" height="495" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="700" height="495" fill="none" stroke="#E3D9CA"/>
+  <!-- 抬头 -->
+  <text x="34" y="54" font-family="Songti SC, SimSun, serif" font-size="21" fill="#17130F">室内工程预算表 · 报价单</text>
+  <text x="34" y="76" font-family="ui-monospace, Consolas, monospace" font-size="9.5" fill="#7A7165" letter-spacing="1">2023.02.11 · 68M² · 4 张工作表 / 4 SHEETS</text>
+  <line x1="34" y1="92" x2="666" y2="92" stroke="#17130F" stroke-width="1.4"/>
+  <!-- 表头 -->
+  <g font-family="-apple-system, Microsoft YaHei, sans-serif" font-size="9" fill="#7A7165">
+    <text x="34" y="112">序号</text>
+    <text x="86" y="112">工程项目</text>
+    <text x="404" y="112">数量</text>
+    <text x="470" y="112">单位</text>
+    <text x="590" y="112" text-anchor="end">金额</text>
+  </g>
+  <line x1="34" y1="120" x2="666" y2="120" stroke="#EFE8DC"/>
+  <!-- 行 -->
+  <g>
+    <!-- row template: y=140,170,200,... -->
+    <g fill="#E9E2D6">
+      <rect x="34" y="132" width="14" height="7" rx="1"/><rect x="86" y="132" width="196" height="7" rx="1"/>
+      <rect x="404" y="132" width="26" height="7" rx="1"/><rect x="470" y="132" width="22" height="7" rx="1"/>
+    </g>
+    <rect x="596" y="132" width="70" height="7" rx="1" fill="#D8CFC0"/>
+
+    <g fill="#E9E2D6">
+      <rect x="34" y="162" width="14" height="7" rx="1"/><rect x="86" y="162" width="248" height="7" rx="1"/>
+      <rect x="404" y="162" width="30" height="7" rx="1"/><rect x="470" y="162" width="22" height="7" rx="1"/>
+    </g>
+    <rect x="602" y="162" width="64" height="7" rx="1" fill="#D8CFC0"/>
+
+    <g fill="#E9E2D6">
+      <rect x="34" y="192" width="14" height="7" rx="1"/><rect x="86" y="192" width="176" height="7" rx="1"/>
+      <rect x="404" y="192" width="22" height="7" rx="1"/><rect x="470" y="192" width="22" height="7" rx="1"/>
+    </g>
+    <rect x="608" y="192" width="58" height="7" rx="1" fill="#D8CFC0"/>
+
+    <g fill="#E9E2D6">
+      <rect x="34" y="222" width="14" height="7" rx="1"/><rect x="86" y="222" width="214" height="7" rx="1"/>
+      <rect x="404" y="222" width="34" height="7" rx="1"/><rect x="470" y="222" width="22" height="7" rx="1"/>
+    </g>
+    <rect x="590" y="222" width="76" height="7" rx="1" fill="#D8CFC0"/>
+  </g>
+  <g stroke="#EFE8DC">
+    <line x1="34" y1="152" x2="666" y2="152"/>
+    <line x1="34" y1="182" x2="666" y2="182"/>
+    <line x1="34" y1="212" x2="666" y2="212"/>
+    <line x1="34" y1="242" x2="666" y2="242"/>
+  </g>
+  <!-- 分组标题条 -->
+  <rect x="34" y="254" width="632" height="22" fill="#F3ECE1"/>
+  <text x="42" y="269" font-family="-apple-system, Microsoft YaHei, sans-serif" font-size="9" fill="#7A7165">六 · 综合部分</text>
+  <text x="658" y="269" font-family="ui-monospace, Consolas, monospace" font-size="9" fill="#7A7165" text-anchor="end">3,540.00</text>
+
+  <!-- 底部合计 -->
+  <line x1="34" y1="392" x2="666" y2="392" stroke="#17130F" stroke-width="1.4"/>
+  <text x="34" y="416" font-family="-apple-system, Microsoft YaHei, sans-serif" font-size="9.5" fill="#7A7165">合计（一价全包）</text>
+  <text x="666" y="418" font-family="Songti SC, SimSun, serif" font-size="24" fill="#9C3A1B" text-anchor="end">136,926.98</text>
+  <text x="34" y="446" font-family="ui-monospace, Consolas, monospace" font-size="8.5" fill="#9B9184" letter-spacing=".6">含 8% 管理费 · 设计费（施工）全免 · 不含主材外项目</text>
+  <text x="34" y="464" font-family="ui-monospace, Consolas, monospace" font-size="8.5" fill="#9B9184" letter-spacing=".6">结算价 = 报价价 · 零增项</text>
+</svg>

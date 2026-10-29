@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PasteNote · 桌面效率工具 — 蔡腾宇</title>
+<meta name="description" content="把「复制 → 切窗 → 粘贴 → 备注」压成按一次 Ctrl+V 取下一条：预装剪贴板、枚举状态、数据不出本机。含设计取舍、迭代记录与 21 项回归验证。">
+<meta name="theme-color" content="#FAF7F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12100D" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PasteNote · 桌面效率工具 — 蔡腾宇">
+<meta property="og:description" content="把跨窗口的重复操作，重构成一条快捷键流水线。">
+<meta property="og:image" content="assets/img/pn-01-main.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+</svg>
+
+<header class="site-head">
+  <div class="shell bar">
+    <a class="brand" href="index.html" aria-label="回到首页">
+      <span class="mark" aria-hidden="true">蔡</span>
+      <span class="txt"><span class="name">CAI TENGYU</span><span class="role">Portfolio · 2026</span></span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html#works" aria-current="page">作品</a>
+      <a href="index.html#method">方法</a>
+      <a href="index.html#about">关于</a>
+      <a href="index.html#contact">联系</a>
+    </nav>
+    <div class="head-tools">
+      <button class="icon-btn" data-theme-toggle aria-label="切换深浅色" aria-pressed="false"><svg aria-hidden="true"><use href="#i-moon"/></svg></button>
+      <button class="icon-btn menu-btn" data-menu aria-expanded="false" aria-controls="drawer" aria-label="打开菜单"><svg aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+  <div class="drawer" id="drawer">
+    <nav aria-label="移动端导航">
+      <a href="index.html#works"><span>作品</span><span>01—03</span></a>
+      <a href="index.html#method"><span>方法</span><span>HOW</span></a>
+      <a href="index.html#about"><span>关于</span><span>ABOUT</span></a>
+      <a href="index.html#contact"><span>联系</span><span>CONTACT</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="proj-hero" style="--c1:#2B3E7C">
+    <div class="shell">
+      <div class="crumb"><a href="index.html">作品集</a><span class="sep">/</span><span class="cur">02 · PasteNote</span></div>
+      <div class="tag" style="color:#2B3E7C"><span class="sq" style="background:#2B3E7C"></span>Desktop Tool · 2026.10 · 独立设计与落地</div>
+      <h1>PasteNote</h1>
+      <p class="sub">把跨窗口的重复操作，重构成一条快捷键流水线：一列客户 / 工单一次性装载，之后每按一次 Ctrl+V 就是下一条，状态与备注当场记下，收尾一键导出回跟进表。</p>
+      <div class="meta">
+        <span>形态 <b>Windows 单文件 · 免安装</b></span>
+        <span>技术 <b>C# WinForms + WebView2</b></span>
+        <span>角色 <b>需求 · 交互 · 口径 · 验收</b></span>
+        <span>状态 <b>稳定自用</b></span>
+      </div>
+      <div class="kpis">
+        <div class="k"><b>68<small>KB</small></b><span>主程序（另 89KB 界面）</span></div>
+        <div class="k"><b>21<small>项</small></b><span>回归自测全通过</span></div>
+        <div class="k"><b>3<small>次</small></b><span>有据可查的迭代</span></div>
+        <div class="k"><b>0<small>台</small></b><span>服务器 · 数据只在注册表</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc">
+    <div class="shell">
+      <div class="grid">
+        <aside class="side" aria-label="本页目录">
+          <div class="lbl">CONTENTS</div>
+          <nav>
+            <a href="#s-problem">一 · 问题</a>
+            <a href="#s-solution">二 · 方案</a>
+            <a href="#s-tradeoff">三 · 设计取舍</a>
+            <a href="#s-ui">四 · 界面</a>
+            <a href="#s-iter">五 · 迭代记录</a>
+            <a href="#s-eng">六 · 工程与验证</a>
+            <a href="#s-limits">七 · 局限</a>
+            <a href="#s-file">八 · 获取原文件</a>
+          </nav>
+        </aside>
+
+        <article class="article">
+          <p class="lead">这个工具解决的不是「复制粘贴慢」，而是每天几十次的<strong>窗口切换</strong>。一列 20～50 条编号，要挨个到 IM / 表单里联系，联系完把结果记回来——真正贵的是来回找位置、怕漏记、以及收尾时把同一批数据再录一遍。</p>
+
+          <figure>
+            <img src="assets/img/pn-01-main.png" alt="PasteNote 主界面" data-zoom data-title="图 1 · 主界面" width="1400" height="900" loading="lazy">
+            <figcaption><b>图 1 · 主界面。</b>左侧是项目，中间一列待处理内容，右侧两列「贴纸」（枚举状态）+ 自由备注。绿行 = 刚刚粘贴，蓝框 = 下一条，灰行 = 已处理。</figcaption>
+          </figure>
+
+          <h2 id="s-problem"><span class="n">01</span>问题：贵的是「窗口切换税」</h2>
+          <p>原来的做法是：在 Excel 里复制一个编号 → 切到 IM 粘贴 → 谈完切回 Excel → 写一句备注 → 再复制下一个。拆开看是三笔成本：</p>
+          <ul>
+            <li><strong>切换成本</strong>：每处理一条来回切两次窗口，50 条就是 100 次碎片切换；</li>
+            <li><strong>记忆成本</strong>：切回来常忘了刚才这条联系上没有，于是重复联系或漏记——这比慢更贵；</li>
+            <li><strong>状态成本</strong>：状态只写在备注文字里，不是结构化数据，收尾还要手工整理回跟进表。</li>
+          </ul>
+          <p>也试过「不用工具」的替代方案：把话术写进输入法快捷短语，装不下备注与状态；在 Excel 里处理再回填，状态仍要二次录入。所以真正要解决的是<strong>顺序、状态、回填</strong>三件事——「剪贴板工具」只是最后一公里的形态，不是问题本身。</p>
+
+          <h2 id="s-solution"><span class="n">02</span>方案：一次装载，之后只剩一个动作</h2>
+          <p>把一列内容<strong>一次性</strong>贴进「第 1 步」框，点「生成内容」，整列就变成一张带状态的清单；之后每按一次 <code>Ctrl+V</code> 就是下一条，顺手点一下贴纸、写一句备注；全部处理完，导出回跟进表。</p>
+
+          <div class="steps old">
+            <div class="row">
+              <span class="s">Excel 复制编号</span><span class="ar">→</span>
+              <span class="s">切到 IM</span><span class="ar">→</span>
+              <span class="s">粘贴</span><span class="ar">→</span>
+              <span class="s">切回 Excel 写备注</span>
+            </div>
+            <div class="note">原流程：4 步 · 2 次窗口切换 · 50 条 = 200 步</div>
+          </div>
+
+          <div class="steps new">
+            <div class="row">
+              <span class="s">一次性贴入整列 → 生成内容</span><span class="ar">→</span>
+              <span class="s">Ctrl+V 下一条</span><span class="ar">→</span>
+              <span class="s">点贴纸 / 写备注</span>
+            </div>
+            <div class="note">新流程：1 步 · 0 次窗口切换 · 收尾导出回跟进表</div>
+          </div>
+
+          <h3>关键机制：在你按键「之前」就把下一条装进剪贴板</h3>
+          <p>整个工具最关键的一行设计，不是「按快捷键换内容」，而是<strong>预装</strong>：程序始终把「下一条」提前放进剪贴板，你按下的那一下，目标窗口粘到的就是界面上标着「下一条」的那条。</p>
+
+          <div class="panel">
+            <div class="cap"><span>CLIPBOARD PRIMING</span><span>3 STEPS</span></div>
+            <div class="steps" style="border:0;padding:0;margin:0;background:transparent">
+              <div class="row">
+                <span class="s">按键之前：剪贴板里已躺好「下一条」</span><span class="ar">→</span>
+                <span class="s">按下 Ctrl+V：粘到的正是界面上那一条</span><span class="ar">→</span>
+                <span class="s">松手之后：才把「再下一条」预装进去</span>
+              </div>
+            </div>
+          </div>
+
+          <p>这样换来的是：轻按、按住不放、连着快按，都不会错位。反过来，如果等按下去才写剪贴板，就会和目标窗口的粘贴抢时间——三种手感里总有一种会粘出上一条。</p>
+
+          <figure>
+            <img src="assets/img/pn-02-loop.gif" alt="连按 Ctrl+V 的界面效果" data-zoom data-title="图 2 · 按一次 = 粘一条" width="1400" height="860" loading="lazy">
+            <figcaption><b>图 2 · 按一次 = 粘一条（录屏）。</b>连续处理时绿行往下走一格、下一条随即高亮，底部「剩余 / 已用」和「下一条：第 N 条」同步更新；列表自动跟着走，不用手滚鼠标。</figcaption>
+          </figure>
+
+          <p>状态轴是三态 + 倒序：<strong>未处理 / 已处理 / 刚刚粘贴</strong>。倒序视图以绿条为轴心，已处理的行钉在原位，未处理的行从下往上填空位——处理到一半切出去接个电话回来，不用重新找位置。</p>
+
+          <h2 id="s-tradeoff"><span class="n">03</span>设计取舍</h2>
+          <div class="tbl-wrap">
+            <div class="scroll">
+              <table>
+                <caption>六个决定，以及被否掉的方案</caption>
+                <thead><tr><th>决策</th><th>为什么这么定</th><th>被否掉的方案</th></tr></thead>
+                <tbody>
+                  <tr><td><b>不用大模型</b><br>纯规则 + 快捷键队列</td><td>这个场景确定性极高：把 A 列文字按顺序送进 B 窗口，规则能 100% 命中。引入模型只增加延迟、成本与不确定性</td><td>用模型生成话术 / 自动分类：对主流程没有增益，反而让「按一下就完事」变慢</td></tr>
+                  <tr><td><b>预装剪贴板</b><br>而不是按键时再写</td><td>按键瞬间写会和目标窗口的粘贴赛跑；轻按、长按、连按三种手感都会错位</td><td>监听按键后再写剪贴板：容易粘出上一条，用户第一反应是「这工具坏了」</td></tr>
+                  <tr><td><b>状态用枚举贴纸</b><br>备注用自由文本</td><td>状态要统计、要回填，必须结构化；备注是长尾信息，不该被枚举框死</td><td>全部写成一列自由文本：收尾无法统计，等于没解决「回填」</td></tr>
+                  <tr><td><b>贴纸预设按项目各一套</b></td><td>不同项目的状态词与话术完全不同；共用一套会互相污染</td><td>全局一套定义：切项目就乱，被用户实测否掉</td></tr>
+                  <tr><td><b>数据只在本机</b><br>注册表 + 自动备份 20 份</td><td>客户信息不出本机，合规风险为零；「改坏了一次全没了」是这类小工具最真实的恐惧</td><td>云同步 / 在线账号：直接触发客户数据合规问题，排除</td></tr>
+                  <tr><td><b>两组字号 + 整窗 / 分列拖拽</b></td><td>125% 缩放下字糊、列宽不合理，是真实报上来的问题</td><td>固定布局、只做主题切换：被用户当场否掉</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <h2 id="s-ui"><span class="n">04</span>界面</h2>
+          <p>下面四张图，每一张都对应一条真实报上来的摩擦点，而不是「看起来更精致」。</p>
+
+          <figure>
+            <img src="assets/img/pn-03-presets.png" alt="贴纸定义与预设面板" data-zoom data-title="图 3 · 贴纸定义与预设" width="1400" height="820" loading="lazy">
+            <figcaption><b>图 3 · 贴纸定义与预设。</b>每个项目各有一套预设：可应用 / 清空 / 存为预设 / 导入导出；双击改名，<code>!</code> 看哪些项目正在用，<code>×</code> 删整套并用 <code>Ctrl+Z</code> 撤销。</figcaption>
+          </figure>
+
+          <figure>
+            <img src="assets/img/pn-04-fontsize.png" alt="字号设置" data-zoom data-title="图 4 · 两组字号" width="1400" height="820" loading="lazy">
+            <figcaption><b>图 4 · 字号：内容与程序分开调。</b>「内容字体」只影响号码 / 贴纸 / 备注（行高跟着变），「程序字体」只影响按钮 / 标签 / 状态栏；各带三档 + 滑杆，两组分别记住。</figcaption>
+          </figure>
+
+          <figure>
+            <img src="assets/img/pn-05-window.png" alt="窗口调整把手" data-zoom data-title="图 5 · 窗口调整" width="1400" height="820" loading="lazy">
+            <figcaption><b>图 5 · 窗口调整。</b>点「窗口调整」后，底部浮出整窗缩放的拉手，左右各出现一根竖把手——只增减单列宽度，另一列同步让位，所以贴纸宽度一个像素都不变。</figcaption>
+          </figure>
+
+          <figure>
+            <img src="assets/img/pn-06-dark.png" alt="黑夜主题" data-zoom data-title="图 6 · 黑夜主题" width="1400" height="820" loading="lazy">
+            <figcaption><b>图 6 · 黑夜主题。</b>明暗两套主题共用同一套布局变量，切主题不改状态、不动数据。</figcaption>
+          </figure>
+
+          <h2 id="s-iter"><span class="n">05</span>迭代记录：每一版都来自一次真实摩擦</h2>
+          <div class="tbl-wrap">
+            <div class="scroll">
+              <table>
+                <caption>三次迭代 · 触发原因</caption>
+                <thead><tr><th>版本</th><th>改了什么</th><th>触发原因</th></tr></thead>
+                <tbody>
+                  <tr><td>2026-10-17</td><td>按真实缩放重绘界面（PerMonitorV2）；修好「自动备份导入后内容全挤成一条」</td><td>125% 缩放下字是糊的；备份恢复是最后一道保险，不能坏</td></tr>
+                  <tr><td>2026-10-25</td><td>贴纸预设（每个项目一套，可导入导出）；「贴纸定义」加红边框 + 红点提醒</td><td>每换一个项目都要重录一遍状态词，重复劳动</td></tr>
+                  <tr><td>2026-10-26</td><td>修「置顶」假勾选；窗口可拉 + 左右分列把手；两组字号；点贴纸不再被卷回「下一条」</td><td>三条都是用户实测报上来的「用着别扭」，不是我觉得该加</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p>这张表里没有「性能优化 300%」这种数字，因为改动全部是小而具体的摩擦点。迭代的价值不在数量，而在于每次都能指出「哪一步让人多花了注意力」。</p>
+
+          <h2 id="s-eng"><span class="n">06</span>工程与验证</h2>
+          <p>工具很小，但要求「每次改完必须能证明没坏」。做法是给程序装自测钩子，让人不必靠手点：</p>
+          <ul>
+            <li><code>--nop</code> / <code>--demo</code>：装一份演示数据且不写注册表，测试不污染真实数据；</li>
+            <li><code>--js=…</code> / <code>--shot=…</code>：页面就绪后执行脚本，2.5 秒后截图并退出——每加一个功能，都留一张截图当证据；</li>
+            <li><code>--dump=…</code> / <code>--actions=…</code>：把状态导出成文本、按顺序跑动作，做无人值守回归；</li>
+            <li><strong>回归套件 21 项</strong>：倒序结构、退一条、逐条粘贴结构稳定、全粘完不崩、贴纸循环、备注写入……全部 PASS 才算过；</li>
+            <li><strong>数据兜底</strong>：每次保存前把上一份整份导出到 <code>数据自动备份\</code>（保留 20 份），格式化成空也能捞回来。</li>
+          </ul>
+
+          <div class="callout callout--plain">
+            <b>一句话说清我的角色：</b>需求、交互、状态口径、验收标准都是我定的；代码由 AI 编程工具实现。工作方式是——先把「怎么算做对了」写成可执行的检查，再让 AI 去写，最后用检查来验收，而不是「看着像好了」。
+          </div>
+
+          <h2 id="s-limits"><span class="n">07</span>局限与下一步</h2>
+          <p>这一节是主动写的，因为它决定了这个项目能讲多深：</p>
+          <ul>
+            <li><strong>扩散卡在「能不能装」，不在「好不好用」。</strong>公司电脑不允许安装外部程序，担心来源与权限风险，所以这一版从一开始就没打算在公司内推广；后来交给一位正好有同类工作场景的朋友试用，才拿到第一个真实使用者。再顺手的工具，进不去那台电脑就等于不存在。</li>
+            <li><strong>早期功能是在「长」而不是在「选」。</strong>当时的判断标准是「有用就加」，缺少需求强度 / 使用频率 / 维护成本的排序依据；现在每加一项，先问「它让主流程更快了吗」，答案是否就不做。</li>
+            <li><strong>刻意不做 AI 化。</strong>这个场景用规则就能 100% 命中，加模型只增加延迟和不确定性。真要加，也只会加在「事后整理」这一段——比如把备注里的自由文本自动归成状态；先联系谁、怎么开口，那属于业务判断，工具不必替人做主。</li>
+          </ul>
+
+          <h2 id="s-file"><span class="n">08</span>获取原文件</h2>
+          <p>完整的可执行程序、说明文档与开发过程（含设计稿与交接说明）打包在网盘里，可直接下载试用：</p>
+
+          <div class="cloud">
+            <span class="k">BAIDU NETDISK · 原文件</span>
+            <h3>PasteNote · 程序 + 说明 + 开发内容</h3>
+            <p>解压后直接运行 <code style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:inherit">PasteNote.exe</code>（绿色免安装，Windows）。演示数据不写注册表。</p>
+            <div class="io">
+              <a class="url" href="https://pan.baidu.com/s/1a7cn7WFDIafASIqtbe0nZg?pwd=e5ju" target="_blank" rel="noopener">https://pan.baidu.com/s/1a7cn7WFDIafASIqtbe0nZg?pwd=e5ju</a>
+              <div class="row2">
+                <div class="pw"><em>提取码</em><b>e5ju</b><button data-copy="e5ju" type="button">复制</button></div>
+                <a class="go" href="https://pan.baidu.com/s/1a7cn7WFDIafASIqtbe0nZg?pwd=e5ju" target="_blank" rel="noopener"><span>打开网盘</span><span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="next">
+            <span class="lbl">RELATED</span>
+            <a href="review.html"><span>03 · 给它做一份两遍对照的评测</span><span>看这个 →</span></a>
+            <a href="renovation.html"><span>01 · 天怡财富城 68㎡ 旧房改造</span><span>看这个 →</span></a>
+          </div>
+
+          <div class="share">
+            <span class="mono" style="font-size:10.5px;letter-spacing:.1em">SHARE</span>
+            <button class="btn" data-share>复制本页链接</button>
+            <a class="btn" href="index.html">← 回作品集</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="shell in">
+    <div class="top">
+      <span>© <span data-year>2026</span> 蔡腾宇 · 个人作品集</span>
+      <span class="mono">PASTENOTE · 2026.10</span>
+    </div>
+    <span style="font-size:11px;opacity:.8">界面截图为虚构演示数据，不含任何真实客户信息。</span>
+  </div>
+</footer>
+
+<div class="lb" aria-hidden="true" role="dialog" aria-label="图片查看">
+  <button class="close" data-lb-close aria-label="关闭">×</button>
+  <button class="nav prev" data-lb-nav="prev" aria-label="上一张">‹</button>
+  <button class="nav next" data-lb-nav="next" aria-label="下一张">›</button>
+  <div class="stage"><img alt=""></div>
+  <div class="zoombar">
+    <button type="button" data-zc="out" aria-label="缩小">−</button>
+    <button type="button" data-zc="fit" aria-label="适应屏幕">适应</button>
+    <button type="button" data-zc="in" aria-label="放大">＋</button>
+  </div>
+  <div class="bar">
+    <span class="nn">01 / 06</span>
+    <span class="tt"></span>
+    <span class="act"><a href="#" data-full-link target="_blank" rel="noopener">原图</a></span>
+  </div>
+</div>
+
+<button class="totop" aria-label="返回顶部"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M6 11l6-6 6 6"/></svg></button>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
